@@ -1,3 +1,5 @@
+
+
 public class Person {
     String isim;
     String soyisim;
