@@ -60,6 +60,7 @@ public class Person {
 
     public void setAnne(Person anne) {
         this.anne = anne;
+        anne.cocuklar.add(this);
     }
 
     public Person getBaba() {
@@ -101,4 +102,13 @@ public class Person {
         this.personId = personId;
     }
 
+    public void setCocuk(Person cocuk){
+        this.cocuklar.add(cocuk);
+        if(this.gender=="Kadin"){
+            cocuk.setAnne(this);
+        }
+        else{
+            cocuk.setBaba(this);
+        }
+    }
 }
