@@ -7,29 +7,38 @@ public static void main(String[] args) {
 
     Person me = new Person();
     Person anne = new Person();
-    me.setAnne(anne);
-    me.setIsim("Esra");
+    anne.setGender("Kadin");
+    anne.setIsim("Anne");
 
+    me.setIsim("Esra");
+    me.setGender("Kadin");
+    me.setAnne(anne);
+    
     Person anneanne = new Person();
+    anneanne.setIsim("Nene");
+    anneanne.setGender("Kadin");
     anne.setAnne(anneanne);
 
     Person teyze = new Person();
     teyze.setIsim("Ceren");
     teyze.setGender("Kadin");
-    anneanne.cocuklar.add(teyze);
+    anneanne.setCocuk(teyze);
 
     Person teyze1 = new Person();
     teyze1.setIsim("Elif");
     teyze1.setGender("Kadin");
-    anneanne.cocuklar.add(teyze1);
+    anneanne.setCocuk(teyze1);
 
     Person teyze2 = new Person();
     teyze2.setIsim("Nergis");
     teyze2.setGender("Kadin");
-    anneanne.cocuklar.add(teyze2);
+    anneanne.setCocuk(teyze2);
 
     me.getTeyze(me);
     
+    for(int i=0; i<anneanne.cocuklar.size();i++){
+        System.out.println(anneanne.cocuklar.get(i).getIsim());
+    }
 
     // try (Scanner scan1 = new Scanner(System.in)) {
     //     System.out.println("write the name of the first person");

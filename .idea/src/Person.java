@@ -16,7 +16,7 @@ public class Person {
         ArrayList<Person> temp = new ArrayList<Person>();
         if(x.cocuklar!=null){
             for(int i=0; i<x.anne.anne.cocuklar.size(); i++){
-                if(x.anne.anne.cocuklar.get(i).gender=="Kadin"){ //otomatik olarak anne tanımlandığında annenin çocuğu arraylistine kendini eklemeli şu an eklemiyor
+                if(x.anne.anne.cocuklar.get(i).gender=="Kadin"){ 
                     temp.add(x.anne.anne.cocuklar.get(i));
                 }
             }
@@ -106,9 +106,11 @@ public class Person {
         this.cocuklar.add(cocuk);
         if(this.gender=="Kadin"){
             cocuk.setAnne(this);
+            cocuk.setBaba(this.partner);
         }
         else{
             cocuk.setBaba(this);
+            cocuk.setAnne(this.partner);
         }
     }
 }
