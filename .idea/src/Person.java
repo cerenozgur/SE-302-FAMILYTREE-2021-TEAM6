@@ -9,6 +9,7 @@ public class Person {
     Person anne;
     Person baba;
     Person partner;
+
     ArrayList<Person> cocuklar = new ArrayList<Person>();
     int personId;   
 
@@ -29,6 +30,9 @@ public class Person {
             System.out.println("Teyze bulunmuyor.");
         }
     }
+
+    int personId;
+
    
     public String getIsim() {
         return this.isim;
@@ -61,6 +65,8 @@ public class Person {
     public void setAnne(Person anne) {
         this.anne = anne;
         anne.cocuklar.add(this);
+
+
     }
 
     public Person getBaba() {
@@ -78,6 +84,7 @@ public class Person {
     public void setPartner(Person partner) {
         this.partner = partner;
     }
+
     public String getGender() {
         return gender;
     }
@@ -113,4 +120,5 @@ public class Person {
             cocuk.setAnne(this.partner);
         }
     }
+
 }
