@@ -9,9 +9,9 @@ public class Person {
     Person anne;
     Person baba;
     Person partner;
-
+    int personId;  
     ArrayList<Person> cocuklar = new ArrayList<Person>();
-    int personId;   
+ 
 
     public void getTeyze(Person x){
         ArrayList<Person> temp = new ArrayList<Person>();
@@ -30,8 +30,6 @@ public class Person {
             System.out.println("Teyze bulunmuyor.");
         }
     }
-
-    int personId;
 
    
     public String getIsim() {
