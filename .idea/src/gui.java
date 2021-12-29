@@ -62,9 +62,6 @@ class gui {
 
         String gender[] = { "Kadın", "Erkek" };
 
-        // getYourName = new JLabel("");
-        // getYourName.setBounds(485, 221, 74, 30);
-        // frame.getContentPane().add(getYourName);
 
         YourInfo = new JButton("");
         YourInfo.addActionListener(new ActionListener() {
@@ -76,7 +73,7 @@ class gui {
         frame.getContentPane().add(YourInfo);
 
         JPanel panel = new JPanel();
-        panel.setBounds(0, 40, 217, 613);
+        panel.setBounds(0, 40, 220, 620);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 
@@ -85,36 +82,45 @@ class gui {
         panel.add(btnNewButton);
 
         JButton btnAddButton = new JButton("Soy A\u011Fac\u0131na Ekle");
-        btnAddButton.setBounds(10, 179, 176, 25);
+        btnAddButton.setBounds(10, 179, 180, 25);
         panel.add(btnAddButton);
 
         JLabel lblNewLabel_4 = new JLabel("Cinsiyet:");
-        lblNewLabel_4.setBounds(10, 124, 49, 14);
+        lblNewLabel_4.setBounds(10, 135, 70, 20);
         panel.add(lblNewLabel_4);
         JComboBox comboBox = new JComboBox(gender);
-        comboBox.setBounds(90, 120, 96, 22);
+        comboBox.setBounds(90, 135, 100, 20);
         panel.add(comboBox);
 
         JLabel lblNewLabel_3 = new JLabel("Do\u011Fum tarihi:");
-        lblNewLabel_3.setBounds(10, 99, 68, 15);
+        lblNewLabel_3.setBounds(10, 105, 70, 20);
         panel.add(lblNewLabel_3);
 
         tfDate = new JTextField();
-        tfDate.setBounds(90, 97, 96, 20);
+        tfDate.setBounds(90, 105, 100, 20);
         panel.add(tfDate);
         tfDate.setColumns(10);
 
         JLabel lblNewLabel_2 = new JLabel("Soyisim:");
-        lblNewLabel_2.setBounds(10, 74, 50, 15);
+        lblNewLabel_2.setBounds(10, 75, 70, 20);
         panel.add(lblNewLabel_2);
 
         tfSurname = new JTextField();
-        tfSurname.setBounds(90, 72, 96, 20);
+        tfSurname.setBounds(90, 75, 100, 20);
         panel.add(tfSurname);
+        tfSurname.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+                    e.consume(); // ignore the event if it's not an alphabet
+                }
+            }
+        });
         tfSurname.setColumns(10);
 
         tfName = new JTextField();
-        tfName.setBounds(90, 42, 96, 20);
+        tfName.setBounds(90, 45, 100, 20);
         panel.add(tfName);
         tfName.addKeyListener(new KeyAdapter() {
             @Override
@@ -128,11 +134,11 @@ class gui {
         tfName.setColumns(10);
 
         JLabel lblNewLabel_1 = new JLabel("\u0130sim:");
-        lblNewLabel_1.setBounds(9, 44, 50, 15);
+        lblNewLabel_1.setBounds(10, 45, 70, 20);
         panel.add(lblNewLabel_1);
 
-        JLabel lblNewLabel = new JLabel("Giri\u015F");
-        lblNewLabel.setBounds(59, 10, 50, 15);
+        JLabel lblNewLabel = new JLabel("ME");
+        lblNewLabel.setBounds(70, 10, 80, 15);
         panel.add(lblNewLabel);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         btnAddButton.addActionListener(new ActionListener() {
