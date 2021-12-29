@@ -7,6 +7,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Image;
+import java.awt.EventQueue;
 
 class gui {
     private static JTextField tfName;
@@ -62,27 +64,26 @@ class gui {
 
         String gender[] = { "Kadın", "Erkek" };
 
-
         YourInfo = new JButton("");
         YourInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        YourInfo.setBounds(445, 192, 131, 49);
+        YourInfo.setBounds(485, 178, 131, 49);
         frame.getContentPane().add(YourInfo);
 
         JPanel panel = new JPanel();
-        panel.setBounds(0, 40, 220, 620);
+        panel.setBounds(10, 40, 205, 620);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 
-        JButton btnNewButton = new JButton("New button");
-        btnNewButton.setBounds(10, 282, 85, 21);
+        JButton btnNewButton = new JButton("Ebeveyn Ekle:");
+        btnNewButton.setBounds(10, 263, 161, 21);
         panel.add(btnNewButton);
 
         JButton btnAddButton = new JButton("Soy A\u011Fac\u0131na Ekle");
-        btnAddButton.setBounds(10, 195, 180, 25);
+        btnAddButton.setBounds(10, 205, 180, 25);
         panel.add(btnAddButton);
 
         JLabel lblNewLabel_4 = new JLabel("Cinsiyet:");
@@ -137,16 +138,54 @@ class gui {
         lblNewLabel_1.setBounds(10, 45, 70, 20);
         panel.add(lblNewLabel_1);
 
-        JLabel lblNewLabel = new JLabel("ME");
-        lblNewLabel.setBounds(70, 10, 80, 15);
+        JLabel lblNewLabel = new JLabel("Bilgiler:");
+        lblNewLabel.setBounds(60, 10, 80, 15);
         panel.add(lblNewLabel);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        JCheckBox chckbxNewCheckBox = new JCheckBox("Hayatta");
-        chckbxNewCheckBox.setSelected(true);
-        chckbxNewCheckBox.setBounds(10, 165, 70, 23);
-        panel.add(chckbxNewCheckBox);
-        
+
+        JLabel lblNewLabel_5 = new JLabel("Aile \u0130li\u015Fkileri:");
+        lblNewLabel_5.setBounds(79, 240, 80, 13);
+        panel.add(lblNewLabel_5);
+
+        JButton btnNewButton_1 = new JButton("Partner Ekle:");
+        btnNewButton_1.setBounds(10, 291, 161, 21);
+        panel.add(btnNewButton_1);
+
+        JButton btnNewButton_2 = new JButton("\u00C7ocuk Ekle:");
+        btnNewButton_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnNewButton_2.setBounds(10, 317, 161, 21);
+        panel.add(btnNewButton_2);
+
+        JButton btnNewButton_3 = new JButton("K\u0131z/Erkek Karde\u015F Ekle:");
+        btnNewButton_3.setBounds(10, 348, 161, 21);
+        panel.add(btnNewButton_3);
+
+        JButton btnNewButton_4 = new JButton("Kaydet");
+        btnNewButton_4.setBounds(10, 516, 85, 21);
+        panel.add(btnNewButton_4);
+
+        JButton btnNewButton_5 = new JButton("D\u00FCzenle");
+        btnNewButton_5.setBounds(10, 537, 85, 21);
+        panel.add(btnNewButton_5);
+
+        JButton btnNewButton_6 = new JButton("Ara");
+        btnNewButton_6.setBounds(10, 559, 85, 21);
+        panel.add(btnNewButton_6);
+
+        JCheckBox NewCheckBox = new JCheckBox("Hayatta m\u0131?");
+        NewCheckBox.setBounds(2, 161, 108, 21);
+        panel.add(NewCheckBox);
+
+        if (NewCheckBox.isSelected()) {
+            Image img = new ImageIcon(gui.class.getResource("/rip.png")).getImage();
+            YourInfo.setIcon(new ImageIcon(img));
+            YourInfo.setBounds(10, 53, 166, 256);
+
+        }
+
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String textName = tfName.getText();
