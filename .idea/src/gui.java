@@ -84,6 +84,7 @@ class gui {
         frame.getContentPane().add(comboBox);
         
         JButton btnNewButton = new JButton("Soy A\u011Fac\u0131na Ekle");
+        btnNewButton.setBounds(36, 205, 150, 23);
         btnNewButton.setBounds(10, 200, 176, 25);
         frame.getContentPane().add(btnNewButton);
 
