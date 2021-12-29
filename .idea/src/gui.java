@@ -82,7 +82,7 @@ class gui {
         panel.add(btnNewButton);
 
         JButton btnAddButton = new JButton("Soy A\u011Fac\u0131na Ekle");
-        btnAddButton.setBounds(10, 179, 180, 25);
+        btnAddButton.setBounds(10, 195, 180, 25);
         panel.add(btnAddButton);
 
         JLabel lblNewLabel_4 = new JLabel("Cinsiyet:");
@@ -141,6 +141,12 @@ class gui {
         lblNewLabel.setBounds(70, 10, 80, 15);
         panel.add(lblNewLabel);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JCheckBox chckbxNewCheckBox = new JCheckBox("Hayatta");
+        chckbxNewCheckBox.setSelected(true);
+        chckbxNewCheckBox.setBounds(10, 165, 70, 23);
+        panel.add(chckbxNewCheckBox);
+        
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String textName = tfName.getText();
