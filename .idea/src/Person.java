@@ -9,7 +9,7 @@ public class Person extends Relation {
     Person anne;
     Person baba;
     Person partner;
-    int personId;  
+    int personId;
     ArrayList<Person> cocuklar = new ArrayList<Person>();
 
 
@@ -44,8 +44,6 @@ public class Person extends Relation {
     public void setAnne(Person anne) {
         this.anne = anne;
         anne.cocuklar.add(this);
-
-
     }
 
     public Person getBaba() {
@@ -100,6 +98,7 @@ public class Person extends Relation {
         }
     }
 
-   
-
+    public ArrayList<Person> getCocuk(){
+        return this.cocuklar;
+    }
 }

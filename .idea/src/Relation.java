@@ -1,77 +1,64 @@
 import java.util.ArrayList;
 public abstract class Relation{
     
-    public void getTeyze(Person x){
-        ArrayList<Person> temp = new ArrayList<Person>();
-        if(x.cocuklar!=null){
-            for(int i=0; i<x.anne.anne.cocuklar.size(); i++){
-                if(x.anne.anne.cocuklar.get(i).gender=="Kadin"){ 
-                    temp.add(x.anne.anne.cocuklar.get(i));
+    public void indicateRelation(Person a, String b){
+        ArrayList<Person> temp = new ArrayList<Person>(); //return type ArrayList<Person> yapılıp returnde tek kişi bile olsa tempi döndürmek mantıklı kuzen gibi relationlar için
+        switch(b){
+            case "Anne":
+            a.getAnne();
+            case "Baba":
+            a.getBaba();
+            case "Çocuk":
+            a.getCocuk();
+            case "Eş":
+            a.getPartner();
+            case "Teyze":
+            for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){
+                if(a.getAnne().getAnne().getCocuk().get(i).getGender()=="Kadin"){
+                    if(a.getAnne().getAnne().getCocuk().get(i)!=a.getAnne()){
+                        temp.add(a.getAnne().getAnne().getCocuk().get(i));
+                    }
                 }
             }
-            System.out.println(x.isim + " kişisinin teyzeleri: ");
-            for(int i=0; i<temp.size(); i++){
-                System.out.println(temp.get(i).isim);
-            }
-        }
-        else{
-            System.out.println("Teyze bulunmuyor.");
-        }
-    }
-
-    public void getDayi(Person x){
-        ArrayList<Person> temp = new ArrayList<Person>();
-        if(x.cocuklar!=null){
-            for(int i=0; i<x.anne.anne.cocuklar.size(); i++){
-                if(x.anne.anne.cocuklar.get(i).gender=="Erkek"){ 
-                    temp.add(x.anne.anne.cocuklar.get(i));
+            case "Dayı":
+            for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){
+                if(a.getAnne().getAnne().getCocuk().get(i).getGender()=="Erkek"){
+                        temp.add(a.getAnne().getAnne().getCocuk().get(i));
                 }
             }
-            System.out.println(x.isim + " kişisinin dayilari: ");
-            for(int i=0; i<temp.size(); i++){
-                System.out.println(temp.get(i).isim);
-            }
-        }
-        else{
-            System.out.println("Dayi bulunmuyor.");
-        }
-    }
-    public void getHala(Person x) {
-        ArrayList<Person> temp = new ArrayList<Person>();
-        if(x.cocuklar!=null){
-            for(int i=0; i<x.baba.anne.cocuklar.size(); i++){
-                if(x.baba.anne.cocuklar.get(i).gender=="Kadin"){ 
-                    temp.add(x.baba.anne.cocuklar.get(i));
+            case "Amca":
+            for(int i=0; i==a.getBaba().getAnne().getCocuk().size(); i++){
+                if(a.getBaba().getAnne().getCocuk().get(i).getGender()=="Erkek"){
+                        temp.add(a.getBaba().getAnne().getCocuk().get(i));
                 }
             }
-            System.out.println(x.isim + " kişisinin halalari: ");
-            for(int i=0; i<temp.size(); i++){
-                System.out.println(temp.get(i).isim);
-            }
-        }
-        else{
-            System.out.println("Hala bulunmuyor.");
-        }
-
-
-    }
-    
-    public void getAmca(Person x) {
-        ArrayList<Person> temp = new ArrayList<Person>();
-        if(x.cocuklar!=null){
-            for(int i=0; i<x.baba.anne.cocuklar.size(); i++){
-                if(x.baba.anne.cocuklar.get(i).gender=="Erkek"){ 
-                    temp.add(x.baba.anne.cocuklar.get(i));
+            case "Yenge":
+            for(int i=0; i==a.getBaba().getAnne().getCocuk().size(); i++){
+                if(a.getBaba().getAnne().getCocuk().get(i).getGender()=="Erkek"){
+                        temp.add(a.getBaba().getAnne().getCocuk().get(i).getPartner());
                 }
             }
-            System.out.println(x.isim + " kişisinin amcalari: ");
-            for(int i=0; i<temp.size(); i++){
-                System.out.println(temp.get(i).isim);
+            for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){
+                if(a.getAnne().getAnne().getCocuk().get(i).getGender()=="Erkek"){
+                        temp.add(a.getAnne().getAnne().getCocuk().get(i).getPartner());
+                }
+            }
+            
+            case "Kuzen":
+            for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){ //teyze&dayı
+                if(a.getAnne().getAnne().getCocuk().get(i)!=a.getAnne()){
+                    for(int c=0; c==a.getAnne().getAnne().getCocuk().get(i).getCocuk().size(); c++ ){
+                        temp.add(a.getAnne().getAnne().getCocuk().get(i).getCocuk().get(c));
+                    }
+                }
+            }
+            for(int i=0; i==a.getBaba().getAnne().getCocuk().size(); i++){ //amca&hala (amcaya veya teyzeye gidip onların çocuklarını çekebiliriz)
+                if(a.getBaba().getAnne().getCocuk().get(i)!=a.getBaba()){
+                    for(int c=0; c==a.getBaba().getAnne().getCocuk().get(i).getCocuk().size(); c++ ){
+                        temp.add(a.getBaba().getAnne().getCocuk().get(i).getCocuk().get(c));
+                    }
+                }
             }
         }
-        else{
-            System.out.println("Amca bulunmuyor.");
-        }
     }
-
 }
