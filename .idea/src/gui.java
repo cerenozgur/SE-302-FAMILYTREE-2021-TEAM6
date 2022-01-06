@@ -24,6 +24,23 @@ class gui {
         frame.setSize(900, 700);
         frame.getContentPane().setLayout(null);
 
+        JPopupMenu pm = new JPopupMenu("Menü");
+
+        JMenuItem cut = new JMenuItem("Kes");
+        JMenuItem copy = new JMenuItem("Kopyala");
+        JMenuItem paste = new JMenuItem("Yapıştır");
+
+        pm.add(cut);
+        pm.add(copy);
+        pm.add(paste);
+
+        frame.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                pm.show(frame, e.getX(), e.getY());
+            }
+
+        });
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         menuBar.setBounds(0, 0, 900, 30);
@@ -163,17 +180,33 @@ class gui {
         btnNewButton_3.setBounds(10, 348, 161, 21);
         panel.add(btnNewButton_3);
 
-        JButton btnNewButton_4 = new JButton("Kaydet");
-        btnNewButton_4.setBounds(10, 516, 85, 21);
-        panel.add(btnNewButton_4);
+        JButton SaveBtn = new JButton("Kaydet");
+        SaveBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Kaydedildi.");
+            }
+        });
+        SaveBtn.setBounds(10, 516, 85, 21);
+        panel.add(SaveBtn);
 
-        JButton btnNewButton_5 = new JButton("D\u00FCzenle");
-        btnNewButton_5.setBounds(10, 537, 85, 21);
-        panel.add(btnNewButton_5);
+        JButton EditBtn = new JButton("D\u00FCzenle");
+        EditBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Düzenlendi.");
+            }
 
-        JButton btnNewButton_6 = new JButton("Ara");
-        btnNewButton_6.setBounds(10, 559, 85, 21);
-        panel.add(btnNewButton_6);
+        });
+        EditBtn.setBounds(10, 537, 85, 21);
+        panel.add(EditBtn);
+
+        JButton SearchBtn = new JButton("Ara");
+        SearchBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Sonuçlar.");
+            }
+        });
+        SearchBtn.setBounds(10, 559, 85, 21);
+        panel.add(SearchBtn);
 
         JCheckBox NewCheckBox = new JCheckBox("Vefat etti");
         NewCheckBox.setBounds(2, 161, 108, 21);
@@ -188,6 +221,7 @@ class gui {
                     String textSurname = tfSurname.getText();
                     Image img = new ImageIcon(gui.class.getResource("rip2.png")).getImage();
                     YourInfo.setIcon(new ImageIcon(img));
+                    // riplabel.setBounds(485, 183, 45, 13);
 
                     YourInfo.setText(textName + " " + textSurname);
 
