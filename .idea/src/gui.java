@@ -70,7 +70,7 @@ class gui {
 
             }
         });
-        YourInfo.setBounds(485, 178, 131, 49);
+        YourInfo.setBounds(493, 175, 131, 50);
         frame.getContentPane().add(YourInfo);
 
         JPanel panel = new JPanel();
@@ -175,22 +175,27 @@ class gui {
         btnNewButton_6.setBounds(10, 559, 85, 21);
         panel.add(btnNewButton_6);
 
-        JCheckBox NewCheckBox = new JCheckBox("Hayatta m\u0131?");
+        JCheckBox NewCheckBox = new JCheckBox("Vefat etti");
         NewCheckBox.setBounds(2, 161, 108, 21);
         panel.add(NewCheckBox);
 
-        if (NewCheckBox.isSelected()) {
-            Image img = new ImageIcon(gui.class.getResource("/rip.png")).getImage();
-            YourInfo.setIcon(new ImageIcon(img));
-            YourInfo.setBounds(10, 53, 166, 256);
-
-        }
-
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String textName = tfName.getText();
-                String textSurname = tfSurname.getText();
-                YourInfo.setText(textName + " " + textSurname);
+
+                if (NewCheckBox.isSelected()) {
+
+                    String textName = tfName.getText();
+                    String textSurname = tfSurname.getText();
+                    Image img = new ImageIcon(gui.class.getResource("rip2.png")).getImage();
+                    YourInfo.setIcon(new ImageIcon(img));
+
+                    YourInfo.setText(textName + " " + textSurname);
+
+                } else {
+                    String textName = tfName.getText();
+                    String textSurname = tfSurname.getText();
+                    YourInfo.setText(textName + " " + textSurname);
+                }
 
             }
         });
