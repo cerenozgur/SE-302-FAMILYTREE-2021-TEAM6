@@ -92,8 +92,8 @@ class gui {
         MenuBar();
         HeaderPanel();
         ControlPanel();
-        StatusBar();
-        displayTree(currentFamilyTree);
+        //StatusBar();
+        //displayTree(currentFamilyTree);
 
         frame.addWindowListener(new WindowAdapter() {
 
@@ -387,7 +387,7 @@ class gui {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     try {
                         openFile(JFileChooser.getSelectedFile());
-                        displayTree(currentFamilyTree);
+                        //displayTree(currentFamilyTree);
                         // editStatus("Dosya: "+(JFileChooser.getSelectedFile().getAbsolutePath()));
                     } catch (Exception j) {
                         // error
@@ -429,7 +429,7 @@ class gui {
                 // tree saved? or reset
                 currentFamilyTree = new Ft();
                 currentFile = null;
-                displayTree(currentFamilyTree);
+                //displayTree(currentFamilyTree);
                 // editStatus("Boş soyağaçı oluşturuldu");
 
             }
@@ -453,30 +453,15 @@ class gui {
 
     private boolean checkUserWantContinue() {
         if (currentFamilyTree.hasRoot()) {
-            int dialog = JOptionPane.showConfirmDialog(frame, "Kaydetmeden çıkmak istediğine emin misin?",
+            int dialog = JOptionPane.showConfirmDialog(frame,
                     JOptionPane.YES_NO_CANCEL_OPTION);
             return dialog == JOptionPane.YES_OPTION;
         }
         return true;
     }
 
-    // show the creating tree
-    private class newTreeAction implements ActionListener {
 
-        public void actionPerformed(ActionEvent e) {
-            if (checkUserWantContinue()) {
-                currentFamilyTree = new Ft();
-                currentFile = null;
-                // empty tree
-                displayTree(currentFamilyTree);
-                // editStatus("Boş soyagaçı");
-
-            }
-        }
-
-    }
-
-    private class addRelativeAction implements ActionListener {
+ /*   private class addRelativeAction implements ActionListener {
 
         private familyMembers member;
 
@@ -500,9 +485,10 @@ class gui {
         // reset info panel
 
     }
+    */
 
     public static void main(String args[]) {
-        /*
+        /* 
          * JFrame frame = new JFrame("Team6 Family Tree");
          * frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          * frame.setSize(900, 700);

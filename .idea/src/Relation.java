@@ -1,25 +1,27 @@
 import java.util.ArrayList;
 public abstract class Relation{
     
-    public void indicateRelation(Person a, String b){
+    public String indicateRelation(Person a, String b){
         ArrayList<Person> temp = new ArrayList<Person>(); //return type ArrayList<Person> yapılıp returnde tek kişi bile olsa tempi döndürmek mantıklı kuzen gibi relationlar için
         switch(b){
             case "Anne":
-            a.getAnne();
+            temp.add(a.getAnne());
             case "Baba":
-            a.getBaba();
+            temp.add(a.getBaba());
             case "Çocuk":
-            a.getCocuk();
+            temp = a.getCocuk();
             case "Eş":
-            a.getPartner();
+            temp.add(a.getPartner());
+            case "Anneanne":
+            temp.add(a.getAnne().getAnne());
             case "Teyze":
-            for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){
-                if(a.getAnne().getAnne().getCocuk().get(i).getGender()=="Kadin"){
+            /*for(int i=0; i==indicateRelation(a,"Anneanne").get(1).getCocuk().size(); i++){
+                if(indicateRelation(a,"Anneanne").get(1).getCocuk().get(i).getGender()=="Kadin"){
                     if(a.getAnne().getAnne().getCocuk().get(i)!=a.getAnne()){
                         temp.add(a.getAnne().getAnne().getCocuk().get(i));
                     }
                 }
-            }
+            }*/
             case "Dayı":
             for(int i=0; i==a.getAnne().getAnne().getCocuk().size(); i++){
                 if(a.getAnne().getAnne().getCocuk().get(i).getGender()=="Erkek"){
@@ -60,5 +62,6 @@ public abstract class Relation{
                 }
             }
         }
+        return "ehe";
     }
 }
