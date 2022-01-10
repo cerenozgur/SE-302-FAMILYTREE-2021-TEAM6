@@ -453,7 +453,7 @@ class gui {
 
     private boolean checkUserWantContinue() {
         if (currentFamilyTree.hasRoot()) {
-            int dialog = JOptionPane.showConfirmDialog(frame, "Kaydetmeden çıkmak istediğine emin misin?",
+            int dialog = JOptionPane.showConfirmDialog(frame,
                     JOptionPane.YES_NO_CANCEL_OPTION);
             return dialog == JOptionPane.YES_OPTION;
         }
