@@ -1,9 +1,14 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\Esra Melike\\Downloads\\jar_files\\json-20210307.jar",
-        "c:\\Users\\Esra Melike\\Downloads\\json-simple-1.1.1.jar",
-        "jcalendar-1.4.jar",
-        "jgoodies-common-1.2.0.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "C:\\Users\\Esra Melike\\Documents\\GitHub\\SE-302-FAMILYTREE-2021-TEAM6\\.idea\\gson-2.8.9.jar",
+            "C:\\Users\\Esra Melike\\Documents\\GitHub\\SE-302-FAMILYTREE-2021-TEAM6\\jcalendar-1.4.jar",
+            "C:\\Users\\Esra Melike\\Documents\\GitHub\\SE-302-FAMILYTREE-2021-TEAM6\\jgoodies-common-1.2.0.jar"
+
+        ],
+        "exclude": [
+            "c:\\Users\\Esra Melike\\Downloads\\jar_files\\json-20210307.jar"
+        ]
+    }
 }
