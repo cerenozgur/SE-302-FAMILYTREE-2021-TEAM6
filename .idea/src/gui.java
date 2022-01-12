@@ -255,7 +255,7 @@ class gui {
                 focus.setSoyisim(tfSurname.getText());
                 focus.setDogumYili(dateChooser.getDateFormatString());
                 focus.setGender(comboBox.getSelectedItem().toString());
-                //focus.setHayattaMi(NewCheckBox.get);
+                focus.setHayattaMi(NewCheckBox.getText());
 
             }
         });

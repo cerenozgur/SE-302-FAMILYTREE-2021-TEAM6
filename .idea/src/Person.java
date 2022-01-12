@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class Person extends Relation {
     String isim;
     String soyisim;
-    int dogumYili;
+    String dogumYili;
     String gender;
-    boolean hayattaMi;
+    String hayattaMi;
     Person anne;
     Person baba;
     Person partner;
@@ -29,11 +29,11 @@ public class Person extends Relation {
         this.soyisim = soyisim;
     }
 
-    public int getDogumYili() {
+    public String getDogumYili() {
         return this.dogumYili;
     }
 
-    public void setDogumYili(int dogumYili) {
+    public void setDogumYili(String dogumYili) {
         this.dogumYili = dogumYili;
     }
 
@@ -70,11 +70,11 @@ public class Person extends Relation {
         this.gender = gender;
     }
 
-    public boolean isHayattaMi() {
+    public String isHayattaMi() {
         return hayattaMi;
     }
 
-    public void setHayattaMi(boolean hayattaMi) {
+    public void setHayattaMi(String hayattaMi) {
         this.hayattaMi = hayattaMi;
     }
 
