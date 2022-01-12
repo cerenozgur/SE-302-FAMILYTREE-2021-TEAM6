@@ -19,6 +19,9 @@ class gui {
     private static JButton YourInfo;
 
     public static void main(String args[]) {
+
+        Person focus = new Person();
+        
         JFrame frame = new JFrame("Team6 Family Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 700);
@@ -147,7 +150,7 @@ class gui {
                 if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
                     e.consume(); // ignore the event if it's not an alphabet
                 }
-            }
+            }        
         });
         tfName.setColumns(10);
 
