@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Person extends Relation {
     String isim;
     String soyisim;
-    int dogumYili;
+    String dogumYili;
     String gender;
     boolean hayattaMi;
     Person anne;
@@ -12,7 +12,7 @@ public class Person extends Relation {
     Person partner;
     int personId;
     ArrayList<Person> cocuklar = new ArrayList<Person>();
-    public Person(String isim, String soyisim, int dogumyili, String gender, boolean hayattami, Person anne, Person baba, Person partner, int personid, ArrayList<Person> cocuklar){
+    public Person(String isim, String soyisim, String dogumyili, String gender, boolean hayattami, Person anne, Person baba, Person partner, int personid, ArrayList<Person> cocuklar){
         setIsim(isim);
         setSoyisim(soyisim);
         setDogumYili(dogumYili);
@@ -27,7 +27,7 @@ public class Person extends Relation {
     public Person(){
         setIsim(null);
         setSoyisim(null);
-        setDogumYili(0);
+        setDogumYili(null);
         setGender(null);
         setHayattaMi(true);
         setAnne(null);
@@ -53,11 +53,11 @@ public class Person extends Relation {
         this.soyisim = soyisim;
     }
 
-    public int getDogumYili() {
+    public String getDogumYili() {
         return this.dogumYili;
     }
 
-    public void setDogumYili(int dogumYili) {
+    public void setDogumYili(String dogumYili) {
         this.dogumYili = dogumYili;
     }
 
