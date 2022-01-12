@@ -12,7 +12,7 @@ public class Person extends Relation {
     Person partner;
     int personId;
     ArrayList<Person> cocuklar = new ArrayList<Person>();
-    public Person(String isim, String soyisim, String dogumyili, String gender, boolean hayattami, Person anne, Person baba, Person partner, int personid, ArrayList<Person> cocuklar){
+    public Person(String isim, String soyisim, String dogumyili, String gender, String hayattami, Person anne, Person baba, Person partner, int personid, ArrayList<Person> cocuklar){
         setIsim(isim);
         setSoyisim(soyisim);
         setDogumYili(dogumYili);
@@ -29,7 +29,7 @@ public class Person extends Relation {
         setSoyisim(null);
         setDogumYili(null);
         setGender(null);
-        setHayattaMi(true);
+        setHayattaMi(null); //true yazıyordu. stringe döndürdüğüm için null oldu.
         setAnne(null);
         setBaba(null);
         setPartner(null);
