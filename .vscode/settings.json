@@ -1,10 +1,9 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-
-
         "c:\\Users\\Esra Melike\\Downloads\\jar_files\\json-20210307.jar",
-
-        "c:\\Users\\Esra Melike\\Downloads\\json-simple-1.1.1.jar"
+        "c:\\Users\\Esra Melike\\Downloads\\json-simple-1.1.1.jar",
+        "jcalendar-1.4.jar",
+        "jgoodies-common-1.2.0.jar"
     ]
 }

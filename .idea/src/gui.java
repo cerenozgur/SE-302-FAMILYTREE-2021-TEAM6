@@ -9,12 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Image;
 import java.awt.EventQueue;
+import com.toedter.calendar.JDateChooser;
 
 class gui {
     private static JTextField tfName;
     private static JTextField textField_1;
     private static JTextField tfSurname;
-    private static JTextField tfDate;
+    //private static JTextField tfDate;
     private static JLabel getYourName;
     private static JButton YourInfo;
 
@@ -116,11 +117,11 @@ class gui {
         lblNewLabel_3.setBounds(10, 105, 70, 20);
         panel.add(lblNewLabel_3);
 
-        tfDate = new JTextField();
+        /*tfDate = new JTextField();
         tfDate.setBounds(90, 105, 100, 20);
         panel.add(tfDate);
         tfDate.setColumns(10);
-
+*/
         JLabel lblNewLabel_2 = new JLabel("Soyisim:");
         lblNewLabel_2.setBounds(10, 75, 70, 20);
         panel.add(lblNewLabel_2);
@@ -222,6 +223,14 @@ class gui {
         NewCheckBox.setBounds(2, 161, 108, 21);
         panel.add(NewCheckBox);
 
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        dateChooser.setBounds(90, 104, 100, 20);
+        panel.add(dateChooser);
+
         // button  for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -244,7 +253,7 @@ class gui {
 
                 focus.setIsim(tfName.getText());
                 focus.setSoyisim(tfSurname.getText());
-                //focus.setDogumYili(tfDate.getText());
+                focus.setDogumYili(dateChooser.getDateFormatString());
                 focus.setGender(comboBox.getSelectedItem().toString());
                 //focus.setHayattaMi(NewCheckBox.get);
 
