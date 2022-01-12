@@ -87,7 +87,6 @@ class gui {
         YourInfo = new JButton("");
         YourInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
             }
         });
         YourInfo.setBounds(493, 175, 131, 50);
@@ -171,6 +170,14 @@ class gui {
         btnNewButton_1.setBounds(10, 291, 161, 21);
         panel.add(btnNewButton_1);
 
+        btnNewButton_1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                focus.setIsim(tfName.getText());
+                //focus = focus.getAnne().anne;
+
+            }
+        });
+
         JButton btnNewButton_2 = new JButton("\u00C7ocuk Ekle:");
         btnNewButton_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -215,6 +222,7 @@ class gui {
         NewCheckBox.setBounds(2, 161, 108, 21);
         panel.add(NewCheckBox);
 
+        // button  for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -233,6 +241,12 @@ class gui {
                     String textSurname = tfSurname.getText();
                     YourInfo.setText(textName + " " + textSurname);
                 }
+
+                focus.setIsim(tfName.getText());
+                focus.setSoyisim(tfSurname.getText());
+                //focus.setDogumYili(tfDate.getText());
+                focus.setGender(comboBox.getSelectedItem().toString());
+                //focus.setHayattaMi(NewCheckBox.get);
 
             }
         });
