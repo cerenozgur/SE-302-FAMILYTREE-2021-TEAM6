@@ -16,7 +16,6 @@ import java.awt.EventQueue;
 import com.toedter.calendar.JDateChooser;
 import com.google.gson.*;
 
-
 class gui {
     private static JTextField tfName;
     private static JTextField textField_1;
@@ -27,7 +26,7 @@ class gui {
     public static void main(String args[]) {
 
         Person focus = new Person();
-        
+
         JFrame frame = new JFrame("Team6 Family Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 700);
@@ -103,10 +102,6 @@ class gui {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 
-        JButton btnNewButton = new JButton("Ebeveyn Ekle:");
-        btnNewButton.setBounds(10, 263, 161, 21);
-        panel.add(btnNewButton);
-
         JButton btnAddButton = new JButton("Soy A\u011Fac\u0131na Ekle");
         btnAddButton.setBounds(10, 205, 180, 25);
         panel.add(btnAddButton);
@@ -150,7 +145,7 @@ class gui {
                 if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
                     e.consume(); // ignore the event if it's not an alphabet
                 }
-            }        
+            }
         });
         tfName.setColumns(10);
 
@@ -163,92 +158,58 @@ class gui {
         panel.add(lblNewLabel);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel lblNewLabel_5 = new JLabel("Aile \u0130li\u015Fkileri:");
-        lblNewLabel_5.setBounds(79, 240, 80, 13);
-        panel.add(lblNewLabel_5);
-
-
         JTree jTree1 = new JTree();
         jTree1.setModel(new DefaultTreeModel(
-        	new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
-        		{
-        			add(new DefaultMutableTreeNode("Ebevyn\t"));
-        			add(new DefaultMutableTreeNode("Partner\t"));
-        			add(new DefaultMutableTreeNode("\u00C7ocuk"));
-        			add(new DefaultMutableTreeNode("Karde\u015F"));
-        		}
-        	}
-        ));
+                new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
+                    {
+                        add(new DefaultMutableTreeNode("Ebevyn\t"));
+                        add(new DefaultMutableTreeNode("Partner\t"));
+                        add(new DefaultMutableTreeNode("\u00C7ocuk"));
+                        add(new DefaultMutableTreeNode("Karde\u015F"));
+                    }
+                }));
         TreeSelectionModel smd = jTree1.getSelectionModel();
 
-
-
-        JButton btnNewButton_1 = new JButton("Partner Ekle:");
-        btnNewButton_1.setBounds(10, 291, 161, 21);
-        panel.add(btnNewButton_1);
-
-        btnNewButton_1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                focus.setIsim(tfName.getText());
-                //focus = focus.getAnne().anne;
-
-            }
-        });
-
-        JButton btnNewButton_2 = new JButton("\u00C7ocuk Ekle:");
-        btnNewButton_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        btnNewButton_2.setBounds(10, 317, 161, 21);
-        panel.add(btnNewButton_2);
-
-        JButton btnNewButton_3 = new JButton("K\u0131z/Erkek Karde\u015F Ekle:");
-        btnNewButton_3.setBounds(10, 348, 161, 21);
-        panel.add(btnNewButton_3);
-
-        JButton SaveBtn = new JButton("Kaydet");
+        JButton SaveBtn = new JButton("Soy A\u011Fa\u00E7\u0131n\u0131 Kaydet");
         SaveBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Kaydedildi.");
             }
         });
-        SaveBtn.setBounds(10, 516, 85, 21);
+        SaveBtn.setBounds(10, 332, 180, 25);
         panel.add(SaveBtn);
 
-        
-
-        JButton EditBtn = new JButton("D\u00FCzenle");
+        JButton EditBtn = new JButton("Soy A\u011Fa\u00E7\u0131n\u0131 D\u00FCzenle");
         EditBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                        
-                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent();
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
+                        .getLastPathComponent();
 
                 String nameTree = tfName.getText();
-                    String snameTree = tfSurname.getText();
-                    String info = nameTree.concat(snameTree);
+                String snameTree = tfSurname.getText();
+                String info = nameTree.concat(snameTree);
 
                 selectedNode.setUserObject(info);
-        
+
                 DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
-        
+
                 model.reload();
 
                 JOptionPane.showMessageDialog(frame, "Düzenlendi.");
             }
 
         });
-        EditBtn.setBounds(10, 537, 85, 21);
+        EditBtn.setBounds(10, 240, 180, 21);
         panel.add(EditBtn);
 
-        JButton SearchBtn = new JButton("Ara");
+        JButton SearchBtn = new JButton("Soy A\u011Fa\u00E7\u0131nda Ara");
         SearchBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Sonuçlar.");
             }
         });
-        SearchBtn.setBounds(10, 559, 85, 21);
+        SearchBtn.setBounds(10, 301, 180, 21);
         panel.add(SearchBtn);
 
         JCheckBox NewCheckBox = new JCheckBox("Vefat etti");
@@ -257,14 +218,28 @@ class gui {
 
         JDateChooser dateChooser = new JDateChooser();
         dateChooser.getCalendarButton().addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+            public void actionPerformed(ActionEvent e) {
+            }
         });
         dateChooser.setBounds(90, 104, 100, 20);
         panel.add(dateChooser);
 
+        JButton btnDelete = new JButton("Soy A\u011Fa\u00E7\u0131ndan Kald\u0131r");
+        btnDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
+                        .getLastPathComponent();
+                DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
+                model.removeNodeFromParent(selectedNode);
 
-        // button  for "Soy ağacına ekle" :
+                model.reload();
+
+            }
+        });
+        btnDelete.setBounds(10, 266, 180, 25);
+        panel.add(btnDelete);
+
+        // button for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -289,32 +264,31 @@ class gui {
                 focus.setDogumYili(dateChooser.getDateFormatString());
                 focus.setGender(comboBox.getSelectedItem().toString());
                 focus.setHayattaMi(NewCheckBox.getText());
-                
 
-                // creating tree structure and adding person to under the root which selected in tree.
-             
-                if(smd.getSelectionCount() > 0){
-                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent(); 
-                    
-                    
+                // creating tree structure and adding person to under the root which selected in
+                // tree.
+
+                if (smd.getSelectionCount() > 0) {
+                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
+                            .getLastPathComponent();
+
                     String nameTree = tfName.getText();
                     String snameTree = tfSurname.getText();
-                    String info = nameTree.concat(snameTree);
+                    String info = nameTree.concat(" " + snameTree);
 
                     DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(info);
-        
+
                     selectedNode.add(newNode);
-        
+
                     DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
-        
+
                     model.reload();
-                }         
-            }            
+                }
+            }
         });
 
-        jTree1.setBounds(225, 41, 139, 619); 
+        jTree1.setBounds(225, 41, 139, 619);
         frame.getContentPane().add(jTree1);
-    
 
         frame.setVisible(true);
     }
