@@ -12,30 +12,7 @@ public class Person extends Relation {
     Person partner;
     int personId;
     ArrayList<Person> cocuklar = new ArrayList<Person>();
-    public Person(String isim, String soyisim, String dogumyili, String gender, String hayattami, Person anne, Person baba, Person partner, int personid, ArrayList<Person> cocuklar){
-        setIsim(isim);
-        setSoyisim(soyisim);
-        setDogumYili(dogumYili);
-        setGender(gender);
-        setHayattaMi(hayattami);
-        setAnne(anne);
-        setBaba(baba);
-        setPartner(partner);
-        setPersonId(personid);
-        setCocuk(null);
-    }
-    public Person(){
-        setIsim(null);
-        setSoyisim(null);
-        setDogumYili(null);
-        setGender(null);
-        setHayattaMi(null); //true yazıyordu. stringe döndürdüğüm için null oldu.
-        setAnne(null);
-        setBaba(null);
-        setPartner(null);
-        setPersonId(0);
-        setCocuk(null);
-    }
+    
 
     public String getIsim() {
         return this.isim;
