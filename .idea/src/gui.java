@@ -167,6 +167,22 @@ class gui {
         lblNewLabel_5.setBounds(79, 240, 80, 13);
         panel.add(lblNewLabel_5);
 
+
+        JTree jTree1 = new JTree();
+        jTree1.setModel(new DefaultTreeModel(
+        	new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
+        		{
+        			add(new DefaultMutableTreeNode("Ebevyn\t"));
+        			add(new DefaultMutableTreeNode("Partner\t"));
+        			add(new DefaultMutableTreeNode("\u00C7ocuk"));
+        			add(new DefaultMutableTreeNode("Karde\u015F"));
+        		}
+        	}
+        ));
+        TreeSelectionModel smd = jTree1.getSelectionModel();
+
+
+
         JButton btnNewButton_1 = new JButton("Partner Ekle:");
         btnNewButton_1.setBounds(10, 291, 161, 21);
         panel.add(btnNewButton_1);
@@ -200,9 +216,25 @@ class gui {
         SaveBtn.setBounds(10, 516, 85, 21);
         panel.add(SaveBtn);
 
+        
+
         JButton EditBtn = new JButton("D\u00FCzenle");
         EditBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
+                        
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent();
+
+                String nameTree = tfName.getText();
+                    String snameTree = tfSurname.getText();
+                    String info = nameTree.concat(snameTree);
+
+                selectedNode.setUserObject(info);
+        
+                DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
+        
+                model.reload();
+
                 JOptionPane.showMessageDialog(frame, "Düzenlendi.");
             }
 
@@ -231,18 +263,6 @@ class gui {
         dateChooser.setBounds(90, 104, 100, 20);
         panel.add(dateChooser);
 
-        JTree jTree1 = new JTree();
-        jTree1.setModel(new DefaultTreeModel(
-        	new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
-        		{
-        			add(new DefaultMutableTreeNode("Ebevyn\t"));
-        			add(new DefaultMutableTreeNode("Partner\t"));
-        			add(new DefaultMutableTreeNode("\u00C7ocuk"));
-        			add(new DefaultMutableTreeNode("Karde\u015F"));
-        		}
-        	}
-        ));
-        TreeSelectionModel smd = jTree1.getSelectionModel();
 
         // button  for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
@@ -274,13 +294,13 @@ class gui {
                 // creating tree structure and adding person to under the root which selected in tree.
              
                 if(smd.getSelectionCount() > 0){
-                    DefaultMutableTreeNode selectedNode = new DefaultMutableTreeNode("Family Tree");
-                    selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent();
-        
+                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent(); 
+                    
+                    
                     String nameTree = tfName.getText();
                     String snameTree = tfSurname.getText();
                     String info = nameTree.concat(snameTree);
-        
+
                     DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(info);
         
                     selectedNode.add(newNode);
@@ -291,6 +311,7 @@ class gui {
                 }         
             }            
         });
+
         jTree1.setBounds(225, 41, 139, 619); 
         frame.getContentPane().add(jTree1);
     
