@@ -7,6 +7,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.awt.event.KeyAdapter;
@@ -332,7 +333,9 @@ class gui {
                             getNameInfo.setText(nameTree + " " + snameTree);
 
                             Date dateTree = dateChooser.getDate();
-                            getDateInfo.setText(dateTree.toString());
+                            SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yy");
+
+                            getDateInfo.setText(sf.format(dateTree));
 
                             getGenderInfo.setText(comboBox.toString());
 
