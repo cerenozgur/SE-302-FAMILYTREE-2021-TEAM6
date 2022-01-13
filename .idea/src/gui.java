@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeSelectionModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
@@ -227,6 +231,31 @@ class gui {
         dateChooser.setBounds(90, 104, 100, 20);
         panel.add(dateChooser);
 
+        // deneme kısmı sonra burayı sileceğim.
+        /*JTree tree = new JTree();
+        tree.setModel(new DefaultTreeModel(
+        	new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
+        		{
+        			DefaultMutableTreeNode node_1 = new DefaultMutableTreeNode("ebeveyn");
+        			node_1.add(new DefaultMutableTreeNode(""));
+        			add(node_1);
+        			node_1 = new DefaultMutableTreeNode("partner");
+        			node_1.add(new DefaultMutableTreeNode(""));
+        			add(node_1);
+        			node_1 = new DefaultMutableTreeNode("\u00E7ocuk");
+        				node_1.add(new DefaultMutableTreeNode(""));
+        			add(node_1);
+        		}
+        	}
+        ));    
+        tree.setBounds(225, 41, 108, 92);
+        frame.getContentPane().add(tree);
+        */
+        
+
+        JTree jTree1 = new JTree();
+        TreeSelectionModel smd = jTree1.getSelectionModel();
+
         // button  for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -252,9 +281,31 @@ class gui {
                 focus.setDogumYili(dateChooser.getDateFormatString());
                 focus.setGender(comboBox.getSelectedItem().toString());
                 focus.setHayattaMi(NewCheckBox.getText());
+                
 
-            }
+                // creating tree structure and adding person to under the root which selected in tree.
+             
+                if(smd.getSelectionCount() > 0){
+                    DefaultMutableTreeNode selectedNode = new DefaultMutableTreeNode("Family Tree");
+                    selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath().getLastPathComponent();
+        
+                    String nameTree = tfName.getText();
+                    String snameTree = tfSurname.getText();
+                    String info = nameTree.concat(snameTree);
+        
+                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(info);
+        
+                    selectedNode.add(newNode);
+        
+                    DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
+        
+                    model.reload();
+                }         
+            }            
         });
+        jTree1.setBounds(225, 41, 139, 619); 
+        frame.getContentPane().add(jTree1);
+    
 
         frame.setVisible(true);
     }
