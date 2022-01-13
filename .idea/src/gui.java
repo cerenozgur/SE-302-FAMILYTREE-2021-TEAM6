@@ -7,6 +7,8 @@ import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +17,7 @@ import java.awt.Image;
 import java.awt.EventQueue;
 import com.toedter.calendar.JDateChooser;
 import com.google.gson.*;
+import java.time.LocalDate;
 
 class gui {
     private static JTextField tfName;
@@ -65,11 +68,6 @@ class gui {
         mnNewMenu.add(mnıtmNewMenuItem_1);
 
         JMenuItem mnıtmNewMenuItem_2 = new JMenuItem("Çıkış");
-        mnıtmNewMenuItem_2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		System.exit(0);
-        	}
-        });
         mnNewMenu.add(mnıtmNewMenuItem_2);
 
         JMenu mnNewMenu_1 = new JMenu("Yardım");
@@ -99,11 +97,11 @@ class gui {
             public void actionPerformed(ActionEvent e) {
             }
         });
-        YourInfo.setBounds(493, 175, 131, 50);
+        YourInfo.setBounds(540, 182, 131, 50);
         frame.getContentPane().add(YourInfo);
 
         JPanel panel = new JPanel();
-        panel.setBounds(10, 40, 205, 620);
+        panel.setBounds(21, 22, 205, 620);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 
@@ -164,6 +162,7 @@ class gui {
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         JTree jTree1 = new JTree();
+
         jTree1.setModel(new DefaultTreeModel(
                 new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
                     {
@@ -193,7 +192,7 @@ class gui {
 
                 String nameTree = tfName.getText();
                 String snameTree = tfSurname.getText();
-                String info = nameTree.concat(snameTree);
+                String info = nameTree.concat(" " + snameTree);
 
                 selectedNode.setUserObject(info);
 
@@ -222,6 +221,7 @@ class gui {
         panel.add(NewCheckBox);
 
         JDateChooser dateChooser = new JDateChooser();
+
         dateChooser.getCalendarButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             }
@@ -243,6 +243,42 @@ class gui {
         });
         btnDelete.setBounds(10, 266, 180, 25);
         panel.add(btnDelete);
+
+        JLabel nameInfo = new JLabel("\u0130sim ve soyisim:");
+        nameInfo.setBounds(10, 413, 95, 13);
+        panel.add(nameInfo);
+
+        JLabel dateInfo = new JLabel("Do\u011Fum tarihi:");
+        dateInfo.setBounds(10, 454, 95, 13);
+        panel.add(dateInfo);
+
+        JLabel genderInfo = new JLabel("Cinsiyet:");
+        genderInfo.setBounds(10, 477, 70, 13);
+        panel.add(genderInfo);
+
+        JLabel deadInfo = new JLabel("Durum:");
+        deadInfo.setBounds(10, 500, 70, 13);
+        panel.add(deadInfo);
+
+        JLabel membersInfo = new JLabel("Aile Bireyi Bilgileri:");
+        membersInfo.setBounds(61, 391, 94, 13);
+        panel.add(membersInfo);
+
+        JLabel getNameInfo = new JLabel("");
+        getNameInfo.setBounds(10, 431, 162, 13);
+        panel.add(getNameInfo);
+
+        JLabel getDateInfo = new JLabel("");
+        getDateInfo.setBounds(110, 431, 95, 59);
+        panel.add(getDateInfo);
+
+        JLabel getGenderInfo = new JLabel("");
+        getGenderInfo.setBounds(110, 477, 62, 13);
+        panel.add(getGenderInfo);
+
+        JLabel getDeadInfo = new JLabel("");
+        getDeadInfo.setBounds(110, 500, 62, 13);
+        panel.add(getDeadInfo);
 
         // button for "Soy ağacına ekle" :
         btnAddButton.addActionListener(new ActionListener() {
@@ -286,6 +322,22 @@ class gui {
                     selectedNode.add(newNode);
 
                     DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
+
+                    jTree1.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
+                                    .getLastPathComponent();
+                            getNameInfo.setText(nameTree + " " + snameTree);
+
+                            Date dateTree = dateChooser.getDate();
+                            getDateInfo.setText(dateTree.toString());
+
+                            getGenderInfo.setText(comboBox.toString());
+
+                        }
+                    });
 
                     model.reload();
                 }
