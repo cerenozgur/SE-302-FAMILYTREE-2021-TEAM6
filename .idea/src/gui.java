@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.event.MouseAdapter;
@@ -98,11 +101,11 @@ class gui {
             public void actionPerformed(ActionEvent e) {
             }
         });
-        YourInfo.setBounds(540, 182, 131, 50);
+        YourInfo.setBounds(564, 235, 172, 66);
         frame.getContentPane().add(YourInfo);
 
         JPanel panel = new JPanel();
-        panel.setBounds(21, 22, 205, 620);
+        panel.setBounds(21, 31, 205, 629);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
 
@@ -114,6 +117,7 @@ class gui {
         lblNewLabel_4.setBounds(10, 135, 70, 20);
         panel.add(lblNewLabel_4);
         JComboBox comboBox = new JComboBox(gender);
+        comboBox.setSelectedIndex(-1);
         comboBox.setBounds(90, 135, 100, 20);
         panel.add(comboBox);
 
@@ -270,7 +274,7 @@ class gui {
         panel.add(getNameInfo);
 
         JLabel getDateInfo = new JLabel("");
-        getDateInfo.setBounds(110, 431, 95, 59);
+        getDateInfo.setBounds(110, 448, 95, 25);
         panel.add(getDateInfo);
 
         JLabel getGenderInfo = new JLabel("");
@@ -325,19 +329,51 @@ class gui {
                     DefaultTreeModel model = (DefaultTreeModel) jTree1.getModel();
 
                     jTree1.addMouseListener(new MouseAdapter() {
+
                         @Override
                         public void mouseClicked(MouseEvent e) {
+                            TreePath[] paths = jTree1.getSelectionPaths();
+                            for (TreePath path : paths != null ? paths : new TreePath[0]) {
+                                // System.out.println("You've selected: " + path.getLastPathComponent());
+                                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path
+                                        .getLastPathComponent();
+                                getNameInfo.setText(nameTree + " " + snameTree + " " + path.getLastPathComponent());
+                                Date dateTree = dateChooser.getDate();
+                                SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yy");
 
-                            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
-                                    .getLastPathComponent();
-                            getNameInfo.setText(nameTree + " " + snameTree);
+                                getDateInfo.setText(sf.format(dateTree) + " " + path.getLastPathComponent());
 
-                            Date dateTree = dateChooser.getDate();
-                            SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yy");
+                                getGenderInfo.setText(
+                                        comboBox.getSelectedItem().toString() + " " + path.getLastPathComponent());
+                                if (NewCheckBox.isSelected()) {
+                                    getDeadInfo.setText(
+                                            NewCheckBox.getActionCommand() + " " + path.getLastPathComponent());
+                                }
 
-                            getDateInfo.setText(sf.format(dateTree));
+                            }
 
-                            getGenderInfo.setText(comboBox.toString());
+                            /*
+                             * DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)
+                             * jTree1.getSelectionPath().getLastPathComponent();
+                             * getNameInfo.setText(nameTree + " " +
+                             * snameTree+jTree1.getSelectionPath().getLastPathComponent());
+                             * 
+                             * Date dateTree=dateChooser.getDate();
+                             * SimpleDateFormat sf=new
+                             * SimpleDateFormat("dd-MM-yy"+jTree1.getSelectionPath().getLastPathComponent())
+                             * ;
+                             * 
+                             * getDateInfo.setText(sf.format(dateTree)+jTree1.getSelectionPath().
+                             * getLastPathComponent());
+                             * 
+                             * getGenderInfo.setText(comboBox.getSelectedItem().toString()+jTree1.
+                             * getSelectionPath().getLastPathComponent());
+                             * 
+                             * if(NewCheckBox.isSelected()) {
+                             * getDeadInfo.setText(NewCheckBox.getActionCommand()+jTree1.getSelectionPath().
+                             * getLastPathComponent());
+                             * }
+                             */
 
                         }
                     });
@@ -347,7 +383,7 @@ class gui {
             }
         });
 
-        jTree1.setBounds(225, 41, 139, 619);
+        jTree1.setBounds(231, 31, 154, 629);
         frame.getContentPane().add(jTree1);
 
         frame.setVisible(true);
