@@ -65,6 +65,11 @@ class gui {
         mnNewMenu.add(mnıtmNewMenuItem_1);
 
         JMenuItem mnıtmNewMenuItem_2 = new JMenuItem("Çıkış");
+        mnıtmNewMenuItem_2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);
+        	}
+        });
         mnNewMenu.add(mnıtmNewMenuItem_2);
 
         JMenu mnNewMenu_1 = new JMenu("Yardım");
