@@ -231,29 +231,17 @@ class gui {
         dateChooser.setBounds(90, 104, 100, 20);
         panel.add(dateChooser);
 
-        // deneme kısmı sonra burayı sileceğim.
-        /*JTree tree = new JTree();
-        tree.setModel(new DefaultTreeModel(
+        JTree jTree1 = new JTree();
+        jTree1.setModel(new DefaultTreeModel(
         	new DefaultMutableTreeNode("Soy A\u011Fac\u0131") {
         		{
-        			DefaultMutableTreeNode node_1 = new DefaultMutableTreeNode("ebeveyn");
-        			node_1.add(new DefaultMutableTreeNode(""));
-        			add(node_1);
-        			node_1 = new DefaultMutableTreeNode("partner");
-        			node_1.add(new DefaultMutableTreeNode(""));
-        			add(node_1);
-        			node_1 = new DefaultMutableTreeNode("\u00E7ocuk");
-        				node_1.add(new DefaultMutableTreeNode(""));
-        			add(node_1);
+        			add(new DefaultMutableTreeNode("Ebevyn\t"));
+        			add(new DefaultMutableTreeNode("Partner\t"));
+        			add(new DefaultMutableTreeNode("\u00C7ocuk"));
+        			add(new DefaultMutableTreeNode("Karde\u015F"));
         		}
         	}
-        ));    
-        tree.setBounds(225, 41, 108, 92);
-        frame.getContentPane().add(tree);
-        */
-        
-
-        JTree jTree1 = new JTree();
+        ));
         TreeSelectionModel smd = jTree1.getSelectionModel();
 
         // button  for "Soy ağacına ekle" :
