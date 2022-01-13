@@ -136,6 +136,9 @@ class gui {
                 if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
                     e.consume(); // ignore the event if it's not an alphabet
                 }
+                if (Character.isLowerCase(c)) {
+                    e.setKeyChar(Character.toUpperCase(c));
+                }
             }
         });
         tfSurname.setColumns(10);
@@ -150,6 +153,9 @@ class gui {
                 if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
                     e.consume(); // ignore the event if it's not an alphabet
                 }
+                if (Character.isLowerCase(c)) {
+                    e.setKeyChar(Character.toUpperCase(c));
+                }
             }
         });
         tfName.setColumns(10);
@@ -159,7 +165,7 @@ class gui {
         panel.add(lblNewLabel_1);
 
         JLabel lblNewLabel = new JLabel("Bilgiler:");
-        lblNewLabel.setBounds(60, 10, 80, 15);
+        lblNewLabel.setBounds(60, 10, 80, 20);
         panel.add(lblNewLabel);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -175,16 +181,16 @@ class gui {
                 }));
         TreeSelectionModel smd = jTree1.getSelectionModel();
 
-        JButton SaveBtn = new JButton("Soy A\u011Fa\u00E7\u0131n\u0131 Kaydet");
+        JButton SaveBtn = new JButton("Soy A\u011Fac\u0131n\u0131 Kaydet");
         SaveBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Kaydedildi.");
             }
         });
-        SaveBtn.setBounds(10, 332, 180, 25);
+        SaveBtn.setBounds(10, 345, 180, 25);
         panel.add(SaveBtn);
 
-        JButton EditBtn = new JButton("Soy A\u011Fa\u00E7\u0131n\u0131 D\u00FCzenle");
+        JButton EditBtn = new JButton("Soy A\u011Fac\u0131n\u0131 D\u00FCzenle");
         EditBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -205,20 +211,20 @@ class gui {
             }
 
         });
-        EditBtn.setBounds(10, 240, 180, 21);
+        EditBtn.setBounds(10, 240, 180, 25);
         panel.add(EditBtn);
 
-        JButton SearchBtn = new JButton("Soy A\u011Fa\u00E7\u0131nda Ara");
+        JButton SearchBtn = new JButton("Soy A\u011Fac\u0131nda Ara");
         SearchBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Sonuçlar.");
             }
         });
-        SearchBtn.setBounds(10, 301, 180, 21);
+        SearchBtn.setBounds(10, 310, 180, 25);
         panel.add(SearchBtn);
 
         JCheckBox NewCheckBox = new JCheckBox("Vefat etti");
-        NewCheckBox.setBounds(2, 161, 108, 21);
+        NewCheckBox.setBounds(10, 165, 108, 21);
         panel.add(NewCheckBox);
 
         JDateChooser dateChooser = new JDateChooser();
@@ -229,7 +235,7 @@ class gui {
         dateChooser.setBounds(90, 104, 100, 20);
         panel.add(dateChooser);
 
-        JButton btnDelete = new JButton("Soy A\u011Fa\u00E7\u0131ndan Kald\u0131r");
+        JButton btnDelete = new JButton("Soy A\u011Fac\u0131ndan Kald\u0131r");
         btnDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
@@ -241,7 +247,7 @@ class gui {
 
             }
         });
-        btnDelete.setBounds(10, 266, 180, 25);
+        btnDelete.setBounds(10, 275, 180, 25);
         panel.add(btnDelete);
 
         // button for "Soy ağacına ekle" :
@@ -270,8 +276,8 @@ class gui {
                 focus.setGender(comboBox.getSelectedItem().toString());
                 focus.setHayattaMi(NewCheckBox.getText());
 
-                // creating tree structure and adding person to under the root which selected in
-                // tree.
+                // creating tree structure and 
+                //adding person to under the root which selected in tree.
 
                 if (smd.getSelectionCount() > 0) {
                     DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getSelectionPath()
