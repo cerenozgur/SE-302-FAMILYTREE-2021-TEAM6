@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.text.WrappedPlainView;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -10,6 +11,9 @@ import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -22,8 +26,11 @@ import java.awt.EventQueue;
 import com.toedter.calendar.JDateChooser;
 import com.google.gson.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 class gui {
+
+    
     private static JTextField tfName;
     private static JTextField textField_1;
     private static JTextField tfSurname;
@@ -32,8 +39,17 @@ class gui {
 
     public static void main(String args[]) {
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime now = LocalDateTime.now();
         Person focus = new Person();
-
+        Gson gson1 = new Gson();
+        String ourdtfName = "C:/" + dtf.format(now) +".json";
+        File JSONfile1 = new File(ourdtfName);
+        try {
+            JSONfile1.createNewFile();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
         JFrame frame = new JFrame("Team6 Family Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 700);
@@ -99,7 +115,7 @@ class gui {
             }
         });
 
-        String gender[] = { "Kadın", "Erkek" };
+        String gender[] = { "KADIN", "ERKEK" };
 
         YourInfo = new JButton("");
         YourInfo.addActionListener(new ActionListener() {
@@ -318,10 +334,17 @@ class gui {
 
                 focus.setIsim(tfName.getText());
                 focus.setSoyisim(tfSurname.getText());
-                focus.setDogumYili(dateChooser.getDateFormatString());
-                focus.setGender(comboBox.getSelectedItem().toString());
+                SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
+                String date = dcn.format(dateChooser.getDate() );
+                focus.setDogumYili(date);
+                focus.setGender((String)comboBox.getSelectedItem());
                 focus.setHayattaMi(NewCheckBox.getText());
 
+                try (FileWriter writer1 = new FileWriter(ourdtfName)) {
+                    gson1.toJson(focus, writer1);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 // creating tree structure and 
                 //adding person to under the root which selected in tree.
 
